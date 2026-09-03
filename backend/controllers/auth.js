@@ -29,12 +29,28 @@ export const signup = async (req,res)=>{
         try{
             const saveData=await User.create({username:result.data.username,password:hasedPassword,email:result.data.email})
             const token = jwt.sign({userID:saveData._id},process.env.JWT_SECRET)
-            return res.status(200).json({token:token,message:"Your SignUp"})
+            return res.status(200).json({token:token,message:"Your SignUp"},{expiresIn :'7d'})
         }
         catch(e){
             res.json({error:e})
         }
     
     }
+
+}
+
+export async function logIn (req,res){
+    const username= req.body.username;
+    const passsword =req.body.password;
+
+    const userExist= await User.findOne({username})
+    if(userExist){
+        const passValid =await User.findOne({passsword})
+        if(passValid){
+            
+            return res.json()
+        }
+    }
+
 
 }
