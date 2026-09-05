@@ -28,8 +28,8 @@ export const signup = async (req,res)=>{
         const hasedPassword=await bcrypt.hash(password,8)
         try{
             const saveData=await User.create({username:result.data.username,password:hasedPassword,email:result.data.email})
-            const token = jwt.sign({userID:saveData._id},process.env.JWT_SECRET)
-            return res.status(200).json({token:token,message:"Your SignUp"},{expiresIn :'7d'})
+            const token = jwt.sign({userID:saveData._id},process.env.JWT_SECRET,{expiresIn :'7d'})
+            return res.status(200).json({token:token,message:"Your SignUp"})
         }
         catch(e){
             res.json({error:e})
@@ -41,15 +41,19 @@ export const signup = async (req,res)=>{
 
 export async function logIn (req,res){
     const username= req.body.username;
-    const passsword =req.body.password;
+    const password =req.body.password;
+
 
     const userExist= await User.findOne({username})
     if(userExist){
-        const passValid =await User.findOne({passsword})
+        const passValid =await bcrypt.compare(password,userExist.password)
         if(passValid){
-            
-            return res.json()
+            const token= jwt.status(200).sign({userID:userExist._id},process.env.JWT_SECRET,{expiresIn:'7d'})
+            return res.json({token})
         }
+    }
+    else{
+        res.status(404).json({error:"User not found Create Account"})
     }
 
 
