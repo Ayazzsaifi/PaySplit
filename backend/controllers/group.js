@@ -16,9 +16,9 @@ export const createGroup = async (req, res) => {
         return res.status(404).json({error:"userNot found"})
     }
 
-    const membersIds = members.map((e) => {
-        return e._id
-    })
+    const  membersIds = members.map(e =>e._id) 
+    membersIds.push(creatorID)
+
 
     try {
         await group.create({ name: name, creatorID: creatorID, members: membersIds })
