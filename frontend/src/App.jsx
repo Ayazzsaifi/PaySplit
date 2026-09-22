@@ -1,17 +1,20 @@
-import { BrowserRouter ,Routes ,Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import GroupDetail from "./pages/GroupDetail";
 
-function App(){
+function App() {
 
-    return<>
-    <BrowserRouter>
-    <Routes>
-        <Route path="/" element={ <Dashboard /> } />
-        <Route path="/group/:id" element={<GroupDetail/> } />
-    </Routes>
-    
-    </BrowserRouter>
+    return <>
+        <BrowserRouter>
+            <div className="bg-[#0f0f0f] min-h-screen">
+            <Routes>
+                <Route path="/" element={<Dashboard />} />
+                <Route path="/group/:id" element={<GroupDetail />} />
+
+            </Routes>
+        </div>
+
+    </BrowserRouter >
     </>
 }
 
