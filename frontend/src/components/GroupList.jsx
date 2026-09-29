@@ -12,7 +12,8 @@ function GroupList() {
     async function getList() {
         const response = await fetch("http://localhost:3000/api/group/getGroups", { headers: { "Authorization": "Bearer " + localStorage.getItem("token") } })
         const data = await response.json()
-        setGroupList(data)
+        console.log(data)
+        setGroupList(data.message)
     }
 
     return <div className="bg-[#0f0f0f] p-6">
