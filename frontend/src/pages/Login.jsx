@@ -25,6 +25,8 @@ function Login(){
     }
 
     return <div className=" bg-[#0f0f0f] flex min-h-screen flex-col justify-center items-center text-white gap-4 ">
+        <h3 className="text-3xl font-bold">Pay <span className="text-indigo-500 ">Split</span></h3>
+        <p className="text-gray-400 text-sm ">Split bills, not friendships</p>
         <div className="flex flex-col gap-4 w-60">
         <input className=" bg-[#1c1c1c] border rounded-lg px-4 py-2" type="text" onChange={(e)=>setUsername(e.target.value)} value={username} placeholder="Username" />
         <input className=" bg-[#1c1c1c] border rounded-lg px-4 py-2" type="password" onChange={(e)=>setPassword(e.target.value)} value={password} placeholder="Password" />
