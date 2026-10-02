@@ -31,7 +31,7 @@ function Login(){
         <input className=" bg-[#1c1c1c] border rounded-lg px-4 py-2" type="text" onChange={(e)=>setUsername(e.target.value)} value={username} placeholder="Username" />
         <input className=" bg-[#1c1c1c] border rounded-lg px-4 py-2" type="password" onChange={(e)=>setPassword(e.target.value)} value={password} placeholder="Password" />
         <p className="text-red-500">{error}</p>
-        <button className=" cursor-pointer bg-indigo-800 rounded-xl  px-4 py-2" onClick={loginSubmit}>Submit</button>
+        <button className=" cursor-pointer bg-indigo-500 rounded-full px-4 py-2" onClick={loginSubmit}>Log in</button>
         </div>
 
     </div>
