@@ -16,10 +16,14 @@ function Navbar({ balance, username }) {
             <div className=" flex gap-4 items-center">
                 <div className="flex flex-col"><span className="text-xs text-gray-400">you are owed</span> <span className="text-green-400 font-semibold"> {balance} </span> </div>
                 <div className="w-px h-8 bg-[#333]"></div>
-                <div className="w-9 h-9 bg-indigo-500 rounded-full font-semibold text-white flex justify-center items-center">{username.toUpperCase().slice(0, 1)} </div>
-                <div className="flex flex-col items-center gap-2">
-                    <p className="text-white font-semibold">{username}</p>
-                    <button className="text-sm text-gray-300 hover:text-white font-bold cursor-pointer bg-indigo-500 rounded-full px-1 py-1" onClick={logout}>Log out</button>
+
+                <div className="flex items-center gap-2">
+                    <div className="w-9 h-9 bg-indigo-500 rounded-full font-semibold text-white flex justify-center items-center">{username.toUpperCase().slice(0, 1)} </div>
+
+                    <div className="flex flex-col items-start">
+                        <p className="text-white font-semibold">{username}</p>
+                        <button className="text-xs text-gray-300 hover:text-white  cursor-pointer" onClick={logout}>Log out</button>
+                    </div>
                 </div>
             </div>
         </nav>
