@@ -5,7 +5,7 @@ function Login(){
     const [username,setUsername]=useState("")
     const [password,setPassword]=useState("")
     const [error,setError]=useState("")
-    const takeToDashboard=useNavigate()
+    const navigateTo=useNavigate()
     
 
     async function loginSubmit(){
@@ -17,7 +17,7 @@ function Login(){
         const data= await response.json()
         if(data.token){
             localStorage.setItem( "token",data.token)
-            takeToDashboard("/")
+            navigateTo("/")
         }
         else{
             setError("invalid Username Or Password")
@@ -32,6 +32,9 @@ function Login(){
         <input className=" bg-[#1c1c1c] border rounded-lg px-4 py-2" type="password" onChange={(e)=>setPassword(e.target.value)} value={password} placeholder="Password" />
         <p className="text-red-500">{error}</p>
         <button className=" cursor-pointer bg-indigo-500 rounded-full px-4 py-2" onClick={loginSubmit}>Log in</button>
+        <div>
+            <p>New here? <button className="text-indigo-500"  onClick={()=>{navigateTo("/signup")}}>Sign up</button> </p>
+        </div>
         </div>
 
     </div>

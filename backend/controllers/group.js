@@ -37,12 +37,12 @@ export const getGroup = async (req, res) => {
         if(groupIn.length === 0){
             return res.status(404).json({error:"No group Found"})
         }
-        res.status(200).json({message:groupIn})
+        res.status(200).json({successful:"yes",message:groupIn})
 
 
     }
     catch(e){
-        res.status(500).json({ error: "Internal server error" })
+        res.status(500).json({ successful:"no",error: "Internal server error" })
     }
 }
 

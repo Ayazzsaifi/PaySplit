@@ -1,16 +1,27 @@
-function Navbar({ balance, username }) {
+import { useNavigate } from "react-router-dom"
 
+function Navbar({ balance, username }) {
+    const navigateTo = useNavigate()
+
+
+    function logout() {
+        localStorage.removeItem("token")
+        navigateTo("/login")
+    }
     return <>
         <nav className="bg-[#0f0f0f] flex justify-between items-center px-6 py-4 border-b border-[#222]">
             <div>
                 <h3><span className="text-white">Pay</span> <span className="text-indigo-500" >Split</span></h3>
             </div>
-            <div className="flex flex-col items-center">
-                <p className="text-sm"> <span className="text-gray-400">Hi</span> </p>
-                <p><span className="text-2xl font-medium text-white" >{username}</span></p></div>
-            <div className="flex flex-col items-end">
-                <p> <span className="text-gray-400">you are owed</span> </p>
-                <span className="text-green-400"  >{balance}</span></div>
+            <div className=" flex gap-4 items-center">
+                <div className="flex flex-col"><span className="text-xs text-gray-400">you are owed</span> <span className="text-green-400 font-semibold"> {balance} </span> </div>
+                <div className="w-px h-8 bg-[#333]"></div>
+                <div className="w-9 h-9 bg-indigo-500 rounded-full font-semibold text-white flex justify-center items-center">{username.toUpperCase().slice(0, 1)} </div>
+                <div className="flex flex-col items-center gap-2">
+                    <p className="text-white font-semibold">{username}</p>
+                    <button className="text-sm text-gray-300 hover:text-white font-bold cursor-pointer bg-indigo-500 rounded-full px-1 py-1" onClick={logout}>Log out</button>
+                </div>
+            </div>
         </nav>
     </>
 }

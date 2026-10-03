@@ -13,7 +13,8 @@ const signupSchema =z.object({
 export const signup = async (req,res)=>{
     const result= signupSchema.safeParse(req.body)
     if (!result.success){
-       return res.status(400).json({error:result.error.errors})
+       console.log(result.error)
+       return res.status(400).json({error:result.error.issues})
     }
     const username= result.data.username;
     const email=result.data.email;
