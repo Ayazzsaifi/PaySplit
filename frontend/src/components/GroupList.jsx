@@ -20,9 +20,11 @@ function GroupList(props) {
     async function getList() {
         const response = await fetch("http://localhost:3000/api/group/getGroups", { headers: { "Authorization": "Bearer " + localStorage.getItem("token") } })
         const data = await response.json()
-        if(data.success ==="yes"){
+
+        if(data.successful ==="yes"){
            
             setGroupList(data.message)
+            console.log(groupList)
             props.loadingChange(false)
         }
         else{

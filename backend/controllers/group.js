@@ -35,7 +35,7 @@ export const getGroup = async (req, res) => {
     try {
         const groupIn = await group.find({ members: userID })
         if(groupIn.length === 0){
-            return res.status(404).json({error:"No group Found"})
+            return res.status(200).json({successful:"yes",message:[]})
         }
         res.status(200).json({successful:"yes",message:groupIn})
 

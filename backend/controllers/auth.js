@@ -50,7 +50,7 @@ export async function logIn (req,res){
         const passValid =await bcrypt.compare(password,userExist.password)
         if(passValid){
             const token= jwt.sign({userID:userExist._id},process.env.JWT_SECRET,{expiresIn:'7d'})
-            return res.status(200).json({token})
+            return res.status(200).json({token,username:userExist.username})
         }else{
             res.status(401).json({error:"Password is incorrect"})
         }

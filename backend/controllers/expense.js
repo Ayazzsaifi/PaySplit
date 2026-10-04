@@ -55,7 +55,7 @@ export const getUserBalances = async (req, res) => {
         const userID = req.userID
         const userOwnedTo = await paySplit.find({ ownedTo: userID })
         if (userOwnedTo.length === 0) {
-            return res.status(404).json({ message: "You Owned Nothing" })
+            return res.status(200).json({ message: "You Owned Nothing" })
         }
         res.status(200).json({ OwnedTo: userOwnedTo })
 
