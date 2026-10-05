@@ -5,7 +5,7 @@ function Navbar({ balance, username }) {
 
 
     function logout() {
-        localStorage.removeItem("token")
+        localStorage.removeItem("token","username")
         navigateTo("/login")
     }
     return <>
