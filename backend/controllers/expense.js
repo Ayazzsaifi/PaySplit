@@ -17,7 +17,7 @@ export const createExpense = async (req, res) => {
             const splitAmount = amount / members.length
 
             const savedSplit = await Promise.all(filteredMember.map(async (e) => {
-                await paySplit.create({ amount: splitAmount, expense: savedExpense._id, ownedTo: paidBy, ownedby: e })
+                await paySplit.create({ amount: splitAmount, expense: savedExpense._id, ownedTo: paidBy, ownedBy: e })
 
             }))
             res.status(200).json({ message: "Expense created and split successfully" })
@@ -25,8 +25,6 @@ export const createExpense = async (req, res) => {
         else {
             return res.status(404).json({ error: "No group found" })
         }
-
-        // Split-amount 
 
 
     }
@@ -53,16 +51,16 @@ export const getExpensesByGroup = async (req, res) => {
 export const getUserBalances = async (req, res) => {
     try {
         const userID = req.userID
-        const userOwnedTo = await paySplit.find({ ownedTo: userID })
-        if (userOwnedTo.length === 0) {
-            return res.status(200).json({ message: "You Owned Nothing" })
+        const splits = await paySplit.find({ ownedTo: userID })
+        const total = splits.reduce((sum, s) => sum + s.amount, 0)
+
+        const currentUser = await user.findById(userID)
+        if (!currentUser) {
+            return res.status(404).json({ error: "User not found" })
         }
-        res.status(200).json({ OwnedTo: userOwnedTo })
 
-
-    }
-    catch (e) {
+        res.status(200).json({ username: currentUser.username, balance: total })
+    } catch (e) {
         res.status(500).json({ error: "Internal server error" })
-
     }
 }
