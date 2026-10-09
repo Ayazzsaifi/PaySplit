@@ -96,6 +96,5 @@ TODO: dashboard, group detail, add-group modal
 - [ ] Reminder notifications for pending dues
 
 ## Author
-**Mohd Ayaz Saifi**
-[GitHub](https://github.com/Ayazzsaifi) · [LinkedIn](https://linkedin.com/in/mohd-ayaz-59b142253) 
- [Portfolio]
+**Mohd Ayaz **
+[GitHub](https://github.com/Ayazzsaifi) · [LinkedIn](https://linkedin.com/in/mohd-ayaz-59b142253) · [Portfolio](https://my-portfolio-ten-psi-94.vercel.app/)
